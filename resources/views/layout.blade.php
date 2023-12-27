@@ -24,6 +24,11 @@
             font-weight: 600;
             padding: 10px
         }
+       
+        .right-aligned {
+        text-align: right;
+    }
+
         </style>
 </head>
 
@@ -59,7 +64,7 @@
     <br>
     <footer class="footer">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Your Company</p>
+            <p>&copy; {{ date('Y') }} PHP Council</p>
         </div>
     </footer>
 

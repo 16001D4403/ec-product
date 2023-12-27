@@ -22,7 +22,7 @@
                         <p class="heading" style="text-align:center">PHP Council</p>
                             <p style="text-align:center">Log in to your account to continue.</p>
                         @if(session('success'))
-                        <div class="alert alert-success">
+                        <div style="text-align:center" class="alert alert-success">
                             {{ session('success') }}
                         </div>
                         @endif

@@ -42,7 +42,7 @@
                 <tr>
                     <th>S.No.</th>
                     <th>Name</th>
-                    <th>Price</th>
+                    <th class="right-aligned">Price</th>
                     <th>Description</th>
                     <th>Action</th>
                 </tr>
@@ -55,7 +55,7 @@
                 <tr>
                     <td>{{$i++}}</td>
                     <td>{{$prod->name}}</td>
-                    <td>{{$prod->price}}</td>
+                    <td class="right-aligned">{{ number_format($prod->price, 2, '.', ',') }}</td>
                     <td class = "tblcols-width">{{$prod->description}}</td>
                     <td>
                         <a href="{{url('edit-product/'.$prod->id)}}" class="btn btn-primary custom-width">Edit</a>
