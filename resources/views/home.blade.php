@@ -3,11 +3,6 @@
 @section('content')
 <section class="dashboard">
     <div class="main-content">
-        <!-- <div class="search-bar">
-            <input type="text" placeholder="Search for products...">
-            <button>Search</button>
-        </div> -->
-        <!-- <h1>Welcome to Your Dashboard</h1> -->
         <div class="product-list">
             <table id="productTable" class="table">
                 <thead>
@@ -24,7 +19,7 @@
                     <tr>
                         <td>
                             @if($product->image)
-                                <img src="{{ asset($product->image) }}" alt="Product Image" width="100" height="100">
+                            <img src="{{ asset($product->image) }}" alt="Product Image" width="100" height="100">
                             @else
                             <img src="{{ asset('images/default.jpg') }}" alt="Default Image" width="100" height="100">
                             @endif
@@ -32,8 +27,12 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->price }}</td>
-                        <td><form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_NE9dbvYX8OxLvz" async> </script> </form></td>
-                        
+                        <td>
+                            <form>
+                                <script src="
+https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_NE9dbvYX8OxLvz" async> </script>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -41,4 +40,5 @@
         </div>
     </div>
 </section>
+
 @endsection

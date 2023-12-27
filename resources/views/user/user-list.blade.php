@@ -44,7 +44,6 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Password</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -58,7 +57,6 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role}}</td>
-                    <td class="custom-width">{{$user->password}}</td>
                     <td>
                     <a href="{{url('edit-user/'.$user->id)}}" class="btn btn-primary custom1-width">Edit</a>
                     <button type="button" class="btn btn-danger custom1-width" onclick="confirmDelete({{ $user->id }})">Delete</button>

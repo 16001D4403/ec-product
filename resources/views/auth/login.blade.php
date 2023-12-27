@@ -19,8 +19,8 @@
             <div class="container">
                 <form method="POST" action="{{ route('login') }}">
                     <div class="log-card">
-                        <p class="heading">Welcome Back</p>
-                            <!-- <p>We are you to have you Again</p> -->
+                        <p class="heading" style="text-align:center">PHP Council</p>
+                            <p style="text-align:center">Log in to your account to continue.</p>
                         @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
@@ -52,7 +52,7 @@
 
                         <button class="btn" type="submit">Sign In</button>
 
-                        <p class="no-account">Don't Have an Account ?<a class="link" href="/register"> Sign Up</a></p>
+                        <p class="no-account">Don't Have an Account ?<a class="link" href="{{ url('/register') }}"> Sign Up</a></p>
                     </div>
                 </form>
             </div>

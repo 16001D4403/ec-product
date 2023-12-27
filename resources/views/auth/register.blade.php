@@ -53,7 +53,7 @@
                             <input type="password" placeholder="For Ex: Welcome@123" class="input" name="password_confirmation" required>
                         </div>
                         <button class="btn" type="submit">Sign Up</button>
-                        <p class="no-account">Already have an account ?<a class="link" href="/login"> Sign in</a></p>
+                        <p class="no-account">Already have an account ?<a class="link" href="{{url('/login')}}"> Sign in</a></p>
                     </div>
                 </form>
             </div>

@@ -56,7 +56,7 @@
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label">Password<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="password" name="password" placeholder="Enter password" value="{{ $data->password }}" required>
+                <input type="text" class="form-control" id="password" name="password" placeholder="Enter password" value="" required>
                 @error('password')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}

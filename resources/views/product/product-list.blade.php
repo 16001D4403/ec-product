@@ -18,9 +18,13 @@
     .custom-width {
         max-width: 100px; /* Set your desired maximum width here */
     }
+    .tblcols-width {
+        max-width: 200px; /* Set your desired maximum width here */
+        word-wrap: break-word; /* Enable word-wrap when content exceeds the max-width */
+    };
     </style>
 </head>
-
+    
 <body>
     <div class="container mt-4">
         @if(Session::has('success'))
@@ -52,7 +56,7 @@
                     <td>{{$i++}}</td>
                     <td>{{$prod->name}}</td>
                     <td>{{$prod->price}}</td>
-                    <td>{{$prod->description}}</td>
+                    <td class = "tblcols-width">{{$prod->description}}</td>
                     <td>
                         <a href="{{url('edit-product/'.$prod->id)}}" class="btn btn-primary custom-width">Edit</a>
                         <button type="button" class="btn btn-danger custom-width" onclick="confirmDelete({{ $prod->id }})">
