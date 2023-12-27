@@ -42,7 +42,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Name<span style="color: red;">*</span></label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Product Name" required>
+                    <input type="text" class="form-control" id="name" name="name" maxlength="255" placeholder="Enter Product Name" required pattern="^[a-zA-Z0-9\s]+$" title="Only letters, numbers, and spaces are allowed." required>
                     @error('name')
                         <div class="alert alert-danger" role="alert">
                             {{$message}}
@@ -65,7 +65,7 @@
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="description" name="description" placeholder="Enter Description" required></textarea>
+                <textarea class="form-control" id="description" name="description" maxlength="255" placeholder="Enter Description" required></textarea>
                 @error('description')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{$message}}
@@ -76,7 +76,7 @@
         <div class="form-group row">
                 <label for="image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-6">
-                    <input type="file" class="form-control-file" id="image" name="image">
+                    <input type="file" class="form-control-file" id="image" name="image" accept="image/jpeg, image/png, image/jpg, image/gif">
                     <p style="font-size: 12px;" > Only png, jpeg and gif are accepted.</p>
                     @error('image')
                         <div class="alert alert-danger mt-2" role="alert">

@@ -50,10 +50,13 @@ class ProductController extends Controller
     {
         // Validate input data
         $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'], // Allow only letters, numbers, and spaces
+            'price' => 'required|numeric|min:1',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Add validation rules for the image
+        ],
+        [
+            'price.min' => 'Price must be greater than 0.',
         ]);
 
         $name = $request->name;
@@ -107,6 +110,13 @@ class ProductController extends Controller
      */
     public function updateProduct(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'], // Allow only letters, numbers, and spaces
+            'price' => 'required|numeric|min:1',
+            'description' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Add validation rules for the image
+        ]);
+
         $id = $request->id;
         $name = $request->name;
         $price = $request->price;

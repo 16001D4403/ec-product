@@ -20,7 +20,7 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}" placeholder="Enter Name" required>
+                <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}" placeholder="Enter Name" pattern="[A-Za-z ]+" title="Only letters and spaces are allowed" required>
                 @error('name')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="email" name="email" value="{{ $data->email }}" placeholder="Enter Email" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{ $data->email }}" placeholder="Enter Email" required>
                 @error('email')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
@@ -56,7 +56,7 @@
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label">Password<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="password" name="password" placeholder="Enter password" value="" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"  minlength="8" value="" required>
                 @error('password')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
