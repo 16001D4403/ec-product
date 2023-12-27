@@ -114,7 +114,7 @@ class UserController extends Controller
         $user->password = $password;
         $user->save();
 
-        return redirect()->back()->with('success', 'User updated successfully');
+        return redirect()->back()->with('success', 'User updated successfully.');
     }
 
     /**
