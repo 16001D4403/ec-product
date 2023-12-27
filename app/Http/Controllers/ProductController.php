@@ -8,28 +8,52 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    /**
+     * Display a list of products.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $data = Product::get();
         return view('product/product-list', compact('data'));
     }
+
+    /**
+     * Display the home page with a list of products.
+     *
+     * @return \Illuminate\View\View
+     */
     public function homePage()
     {
         $products = Product::all();
         return view('home', compact('products'));
     }
+
+    /**
+     * Display the form to add a new product.
+     *
+     * @return \Illuminate\View\View
+     */
     public function addProduct()
     {
         return view('product/add-product');
     }
 
+    /**
+     * Save a new product to the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function saveProduct(Request $request)
     {
+        // Validate input data
         $request->validate([
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Add validation rules for the image
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $name = $request->name;
@@ -52,22 +76,35 @@ class ProductController extends Controller
             $imagePath = null;
         }
 
+        // Save the product to the database
         $prod = new Product();
         $prod->name = $name;
         $prod->price = $price;
         $prod->description = $description;
-        $prod->image = $imagePath; // Save the image path to the database
+        $prod->image = $imagePath;
         $prod->save();
 
         return redirect()->back()->with('success', 'Product added successfully.');
     }
 
-
+    /**
+     * Display the form to edit a product.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function editProduct($id)
     {
         $data = Product::where('id', '=', $id)->first();
         return view('product/edit-product', compact('data'));
     }
+
+    /**
+     * Update a product in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProduct(Request $request)
     {
         $id = $request->id;
@@ -75,6 +112,7 @@ class ProductController extends Controller
         $price = $request->price;
         $description = $request->description;
 
+        // Find the product in the database
         $product = Product::findOrFail($id);
 
         // Check if a new image is being uploaded
@@ -102,11 +140,23 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product updated successfully.');
     }
 
+    /**
+     * Delete a product from the database.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteProduct($id)
     {
         Product::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Product deleted successfully.');
     }
+
+    /**
+     * Display the success page for payment handling.
+     *
+     * @return \Illuminate\View\View
+     */
     public function handlepayment()
     {
         return view('product/success');
