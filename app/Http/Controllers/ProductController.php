@@ -9,7 +9,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     /**
-     * Display a list of products.
+     * Display a list of products
      *
      * @return \Illuminate\View\View
      */
