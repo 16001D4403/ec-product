@@ -50,10 +50,10 @@ class UserController extends Controller
     {
         // Validate input data
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'role' => 'required',
-            'password' => 'required',
+            'name' => 'required|string|max:255', // Requires a string with a maximum length of 255 characters
+            'email' => 'required|email|unique:users,email', // Requires a valid email address and checks for uniqueness in the 'email' column of the 'users' table
+            'role' => 'required|string|max:255', // Requires a string with a maximum length of 255 characters
+            'password' => 'required|string|min:8', // Requires a string with a minimum length of 8 character
         ]);
 
         $name = $request->name;
@@ -99,6 +99,14 @@ class UserController extends Controller
     public function updateUser(Request $request)
     {
         $id = $request->id;
+
+        $request->validate([
+            'name' => 'required|string|max:255', // Requires a string with a maximum length of 255 characters
+            'email' => 'required|email|unique:users,email,' . $id, // Requires a valid email address and checks for uniqueness in the 'email' column of the 'users' table, except for the current user with ID $id
+            'role' => 'required|string|max:255', // Requires a string with a maximum length of 255 characters
+            'password' => 'required|string|min:8', // Requires a string with a minimum length of 8 characters
+        ]);
+
         $name = $request->name;
         $email = $request->email;
         $role = $request->role;

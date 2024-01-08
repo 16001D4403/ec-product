@@ -20,7 +20,7 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="name" name="name" value="{{ $data->name }}" placeholder="Enter Name" required>
+                <input type="text" class="form-control" id="name" name="name" maxlength="255" value="{{ $data->name }}" placeholder="Enter Name" required pattern="^[a-zA-Z0-9\s]+$" title="Only letters, numbers, and spaces are allowed." required>
                 @error('name')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label for="price" class="col-sm-2 col-form-label">Price<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="price" name="price" value="{{ $data->price }}" placeholder="Enter Price" required>
+                <input type="number" class="form-control" id="price" name="price" value="{{ $data->price }}" placeholder="Enter Price" required>
                 @error('price')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
@@ -42,7 +42,7 @@
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="description" name="description" placeholder="Enter Description" required>{{ $data->description }} </textarea>
+                <textarea class="form-control" id="description" name="description" maxlength="255" placeholder="Enter Description" required>{{ $data->description }} </textarea>
                 @error('description')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}
@@ -59,7 +59,7 @@
                 @else
                     <p>No image available</p>
                 @endif
-                <input type="file" name="image" accept="image/*">
+                <input type="file" name="image" accept="image/*" accept="image/jpeg, image/png, image/jpg, image/gif">
                 <p style="font-size: 12px;" > Only png, jpeg and gif are accepted.</p>
             </div>
         </div>

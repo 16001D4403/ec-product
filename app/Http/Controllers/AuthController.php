@@ -61,9 +61,13 @@ class AuthController extends Controller
     {
         // Validate input data
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]*$/', // Only letters and spaces allowed
+            'email' => 'required|string|email:filter|max:255|unique:users',
             'password' => 'required|string|min:8',
+        ], [
+            'name.regex' => 'Name should contain only letters and spaces.',
+            'email.unique' => 'Email already exists.',
+            'password.min' => 'Password must be at least :min characters long.',
         ]);
 
         try {
@@ -94,7 +98,7 @@ class AuthController extends Controller
         Auth::logout();
 
         // Redirect to the login page
-        return redirect()->intended('/login');
+        return redirect('/login')->with('success', 'Successfully logged out.');
 
         // Additional logic can be added here if needed
     }
