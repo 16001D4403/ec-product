@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Laravel App</title>
+    <title>Gadget Council</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
     <!-- Add your CSS stylesheets or include a CSS framework like Bootstrap here -->
@@ -36,7 +36,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-color">
             <!-- Brand/logo -->
-            <a class="navbar-brand" href="/home">PHP Council</a>
+            <a class="navbar-brand" href="/home">Gadget Council</a>
 
             <!-- Links -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -64,7 +64,7 @@
     <br>
     <footer class="footer">
         <div class="container">
-            <p>&copy; {{ date('Y') }} PHP Council</p>
+            <p>&copy; {{ date('Y') }} Gadget Council</p>
         </div>
     </footer>
 

@@ -50,7 +50,7 @@ class ProductTest extends TestCase
         $this->assertEquals(2+ $productsCount, $data->count());
 
         // Clean up - delete the created products (optional)
-        Product::truncate(); // Delete all products from the database
+        //Product::truncate(); // Delete all products from the database
     }
 
 
@@ -59,9 +59,21 @@ class ProductTest extends TestCase
         $productsCount = Product::count();
 
         // Create sample products for testing
-        Product::create(['name' => 'Product 1', 'price' => 10.99, 'description' => 'Description 1']);
-        Product::create(['name' => 'Product 2', 'price' => 20.99, 'description' => 'Description 2']);
+        // Product::create(['name' => 'Product 1', 'price' => 10.99, 'description' => 'Description 1']);
+        // Product::create(['name' => 'Product 2', 'price' => 20.99, 'description' => 'Description 2']);
 
+        $product = Product::insert([
+            [
+                'name' => 'Product 1',
+                'price' => 10.99,
+                'description' => 'Description 1'
+            ],
+            [
+                'name' => 'Product 2',
+                'price' => 20.99,
+                'description' => 'Description 2'
+            ]
+        ]);
         // Call the homePage method of the ProductController
         $response = $this->productController->homePage();
 
@@ -83,8 +95,9 @@ class ProductTest extends TestCase
         // Check if the number of products returned in the view matches the number of products created for testing
         $this->assertEquals(2 + $productsCount, $products->count());
 
-        // Clean up - delete the created products (optional)
-        Product::truncate(); // Delete all products from the database
+        // Clean up - delete the created products
+        Product::where('name', 'Product 1')->delete();
+        Product::where('name', 'Product 2')->delete();
     }
     
     public function test_addProduct()
@@ -132,7 +145,7 @@ class ProductTest extends TestCase
 
     public function test_saveProduct()
     {
-        // Simulate request data
+        // Simulate request data    
         $requestData = [
             'name' => 'Test Product',
             'price' => 10.99,

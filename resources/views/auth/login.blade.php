@@ -19,7 +19,7 @@
             <div class="container">
                 <form method="POST" action="{{ route('login') }}">
                     <div class="log-card">
-                        <p class="heading" style="text-align:center">PHP Council</p>
+                        <p class="heading" style="text-align:center">Gadget Council</p>
                             <p style="text-align:center">Log in to your account to continue.</p>
                         @if(session('success'))
                         <div style="text-align:center" class="alert alert-success">
