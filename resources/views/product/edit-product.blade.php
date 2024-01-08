@@ -20,7 +20,7 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name<span style="color: red;">*</span></label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="name" name="name" maxlength="255" value="{{ $data->name }}" placeholder="Enter Name" required>
+                <input type="text" class="form-control" id="name" name="name" maxlength="255" value="{{ $data->name }}" placeholder="Enter Name" required pattern="^[a-zA-Z0-9\s]+$" title="Only letters, numbers, and spaces are allowed." required>
                 @error('name')
                     <div class="alert alert-danger mt-2" role="alert">
                         {{ $message }}

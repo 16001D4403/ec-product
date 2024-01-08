@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use App\Models\User; // Adjust this namespace according to your User model
 
 class AuthTest extends TestCase
 {
@@ -23,6 +24,7 @@ class AuthTest extends TestCase
             'confirmPass' => '12345678',
         ]);
         $response->assertRedirect('/login');
+        User::where('name', 'praveen')->delete();
     }
 
     public function test_logout_user(){

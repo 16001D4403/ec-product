@@ -64,7 +64,7 @@ class UserTest extends TestCase
             $userData = [
                 'name' => $this->faker->name,
                 'email' => $this->faker->unique()->safeEmail,
-                'role' => 'User',
+                'role' => 'user',
                 'password' => 'password123', // Replace this with your preferred password generation logic or faker method
             ];
 
@@ -151,7 +151,7 @@ class UserTest extends TestCase
     public function test_deleteUser_success()
     {
         // Create a user in the database
-        $user = User::factory()->create(['role' => 'User']);
+        $user = User::factory()->create(['role' => 'user']);
 
         // Get the user ID
         $userId = $user->id;
@@ -164,6 +164,9 @@ class UserTest extends TestCase
          // Check if the user has been deleted from the database
          $deletedUser = User::find($userId);
          $this->assertNull($deletedUser, 'User should be deleted from the database.');
+         // Deleting users whose email is like '@example.com'
+         User::where('email', 'like', '%@example.%')->delete();
+
     }
 
 }
